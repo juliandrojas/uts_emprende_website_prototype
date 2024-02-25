@@ -1,0 +1,45 @@
+<%- include('../partials/header.ejs') -%>
+<h1 class="text-center">UTS EMPRENDE</h1>
+<div class="container">
+  <a href="/registrar" class="btn btn-primary w-100">
+    ¿No ves tu emprendimiento? ¡Regístralo aquí!
+  </a>
+  <hr />
+  <h2 class="text-center">Algunos de nuestros emprendimientos uteístas</h2>
+  <br>
+  <div class="row">
+    <% emprendimientos.forEach(emprendimiento => { %>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div id="carouselExample<%= emprendimiento.id %>" class="carousel slide">
+            <div class="carousel-inner">
+              <% const emprendimientoImagenes = imagenes.filter(imagen => imagen.id_emprendimiento === emprendimiento.id); %>
+              <% emprendimientoImagenes.forEach((imagen, index) => { %>
+              <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                <img src="<%= imagen.ruta_imagen %>" class="d-block w-100" alt="<%= imagen.alt %>">
+              </div>
+              <% }); %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample<%= emprendimiento.id %>" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample<%= emprendimiento.id %>" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+          <p class="card-text">Nombre: <strong><%= emprendimiento.nombre %></strong></p>
+          <p class="card-text">Creador: <strong><%= emprendimiento.creador %></strong></p>
+          <p class="card-text">Contacto: <strong><%= emprendimiento.contacto %></strong></p>
+          <p class="card-text">Tipo: <strong><%= emprendimiento.tipo %></strong></p>
+          <a href="/upload/<%= emprendimiento.id %>" class="btn btn-primary w-100">Subir fotos</a>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>
+<%- include('../partials/footer.ejs') -%>

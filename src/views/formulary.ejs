@@ -1,0 +1,38 @@
+<%- include('../partials/header.ejs') -%>
+<h1 class="text-center">Sección de registro de emprendimientos</h1>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <form id="formulario" action="/crearemprendimiento" method="post">
+                <div class="mb-3">
+                    <label htmlFor="nombre" class="form-label">Nombre del emprendimiento</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" required />
+                </div>
+                <div class="mb-3">
+                    <label htmlFor="creador" class="form-label">Creador del emprendimiento</label>
+                    <input type="text" class="form-control" name="creador" id="creador" required />
+                </div>
+                <div class="mb-3">
+                    <label htmlFor="contacto" class="form-label">Contacto del emprendimiento</label>
+                    <input type="text" class="form-control" name="contacto" id="contacto" required />
+                </div>
+                <div class="mb-3">
+                    <label htmlFor="tipo" class="form-label">Tipo de emprendimiento</label>
+                    <select class="form-select" name="tipo" id="tipo">
+                        <option value="default">Selecciona una de las opciones</option>
+                        <option value="comida">Comida</option>
+                        <option value="ropa">Ropa</option>
+                        <option value="accesorios">Accesorios</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100">Registrar Emprendimiento</button>
+                </div>
+                <div class="mb-3">
+                    <a href="/" class="btn btn-warning w-100">Volver atrás</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../partials/header.ejs') -%>
